@@ -1,23 +1,151 @@
 aid: virtual-instruments
-name: Virtual Instruments
-description: Virtual Instruments is a company surfaced as a portfolio company of lightspeed-venture-partners
-  and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the
-  enrichment pipeline.
+name: Virtana (Virtual Instruments)
+description: >-
+  Virtana (formerly Virtual Instruments) is an AI-powered hybrid infrastructure
+  observability company whose platform monitors and optimizes performance, cost,
+  and risk across on-premises, colocation, and cloud environments. The platform
+  spans Infrastructure Observability, Container Observability, Application and
+  Service Observability, AI Factory (GPU/AI workload) Observability, Storage
+  Load Testing, and Cloud Cost Management. Virtana exposes public developer
+  surfaces — the Global View APIs (alerts, external alert ingestion, on-prem
+  storage dashboards), the Infrastructure Observability Public REST API
+  (/api/sdk/p/2), and a Cloud Cost Management API — all secured with OAuth2
+  client-credentials bearer tokens, plus an official Model Context Protocol
+  (MCP) server that gives AI agents live access to metric, alert, inventory,
+  relationship, and schema data over streaming HTTP.
 url: https://raw.githubusercontent.com/api-evangelist/virtual-instruments/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.virtana.com/wp-content/uploads/2023/09/virtana-logo.svg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - lightspeed-venture-partners
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: portfolio-lead-enriched
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Infrastructure
+- Observability
+- Monitoring
+- Storage
+- Cloud Cost Management
+- AIOps
+- Performance
+- Alerts
+- MCP
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: Virtana Global View API
+  description: >-
+    Global View APIs for alerts, external alert ingestion, and on-prem storage
+    dashboards. Function-based JSON POST bodies over a Solr-style query engine,
+    served from the Virtana cloud platform.
+  humanURL: https://docs.virtana.com/en/global-view/using-global-view-apis.html
+  baseURL: https://app.cloud.virtana.com
+  properties:
+  - type: APIReference
+    url: https://docs.virtana.com/en/global-view/using-global-view-apis.html
+  - type: Authentication
+    url: https://docs.virtana.com/en/virtana-platform/about-oauth-credentials/get-bearer-token.html
+- name: Virtana Infrastructure Observability Public API
+  description: >-
+    Versioned REST API (/api/sdk/p/2/...) with ~11 top-level endpoints
+    (inventory, schema, and more). OpenAPI/Swagger is downloadable from the IO
+    appliance (releases 7.1.0+). Per-endpoint rate limiting applies.
+  humanURL: https://docs.virtana.com/en/infrastructure-observability/io-user-guide/public-api/getting-started-with-the-public-api.html
+  baseURL: https://app.cloud.virtana.com
+  properties:
+  - type: GettingStarted
+    url: https://docs.virtana.com/en/infrastructure-observability/io-user-guide/public-api/getting-started-with-the-public-api.html
+  - type: Documentation
+    url: https://docs.virtana.com/en/infrastructure-observability/io-user-guide/public-api.html
+- name: Virtana Cloud Cost Management API
+  description: >-
+    Cloud Cost Management (CCM) APIs exposing the cost/usage slicing available
+    in the Virtana Platform UI for integration into user dashboards, including
+    filter-by options on API calls to retrieve alert and cost information.
+  humanURL: https://docs.virtana.com/en/cloud-cost-management/using-ccm-api.html
+  baseURL: https://app.cloud.virtana.com
+  properties:
+  - type: APIReference
+    url: https://docs.virtana.com/en/cloud-cost-management/using-ccm-api.html
+common:
+- type: DomainSecurity
+  url: security/virtual-instruments-domain-security.yml
+- type: Website
+  url: https://www.virtana.com/
+- type: Portal
+  url: https://docs.virtana.com/
+- type: Documentation
+  url: https://docs.virtana.com/
+- type: APIReference
+  url: https://docs.virtana.com/en/global-view/using-global-view-apis.html
+- type: GettingStarted
+  url: https://docs.virtana.com/en/infrastructure-observability/io-user-guide/public-api/getting-started-with-the-public-api.html
+- type: Support
+  url: https://www.virtana.com/support/
+- type: Blog
+  url: https://www.virtana.com/blog/
+- type: Login
+  url: https://app.cloud.virtana.com/ui/new-signin
+- type: PrivacyPolicy
+  url: https://www.virtana.com/privacy/
+- type: TermsOfService
+  url: https://www.virtana.com/legal-notices/
+- type: StatusPage
+  url: https://status.cloud.virtana.com/
+- type: ChangeLog
+  url: https://docs.virtana.com/en/what-s-new-in-virtana-.html
+- type: ChangeLog
+  url: changelog/virtual-instruments-changelog.yml
+- type: Training
+  url: https://training.virtana.com
+- type: Authentication
+  url: authentication/virtual-instruments-authentication.yml
+- type: Conventions
+  url: conventions/virtual-instruments-conventions.yml
+- type: ErrorCatalog
+  url: errors/virtual-instruments-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/virtual-instruments-lifecycle.yml
+- type: MCPServer
+  url: mcp/virtual-instruments-mcp.yml
+- type: Conformance
+  url: conformance/virtual-instruments-conformance.yml
+- type: LLMsTxt
+  url: llms/virtual-instruments-llms.txt
+- type: Packages
+  url: packages/virtual-instruments-packages.yml
+- type: TrustCenter
+  url: security/virtual-instruments-trust-center.yml
+- type: Compliance
+  url: https://www.virtana.com/trust/
+- type: Webhooks
+  url: asyncapi/virtual-instruments-webhooks.yml
+- type: Sandbox
+  url: sandbox/virtual-instruments-sandbox.yml
+- type: GitHubOrganization
+  url: https://github.com/virtual-instruments
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 4
+  pass: local-v1

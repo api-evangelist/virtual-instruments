@@ -1,0 +1,54 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.virtana.com/trust/
+description: >-
+  Cross-cutting standards conformance for the Virtana observability APIs,
+  derived from the documented authentication model and API conventions, plus
+  the published compliance program found on the Virtana Trust page and the
+  docs Regulatory Compliance page: SOC 2 Type II, TX-RAMP Level 2, CSA STAR
+  Registry listing, GDPR/CCPA privacy programs (see
+  security/virtual-instruments-trust-center.yml).
+standards:
+  - id: soc2-type2
+    conforms: true
+    evidence: >-
+      "Virtana is SOC 2 Type II compliant. A copy of the report is available
+      upon request." - https://www.virtana.com/trust/
+  - id: tx-ramp-level2
+    conforms: true
+    evidence: >-
+      "Virtana has achieved TX-RAMP Level 2 certification" -
+      https://docs.virtana.com/en/virtana-platform/regulatory-compliance.html
+  - id: csa-star
+    conforms: true
+    evidence: Listed on the CSA STAR Registry; infosec program aligned with the CSA Cloud Controls Matrix.
+  - id: gdpr
+    conforms: true
+    evidence: GDPR compliance program maintained per https://www.virtana.com/trust/
+  - id: ccpa
+    conforms: true
+    evidence: CCPA compliance program maintained per https://www.virtana.com/trust/
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      Global View auth uses OAuth2 client_credentials grant at
+      /authorization/oauth/token returning access_token/refresh_token/expires_in.
+  - id: oauth2-client-credentials
+    conforms: true
+    evidence: grant_type=client_credentials documented for machine-to-machine access.
+  - id: bearer-token-http-auth
+    conforms: true
+    evidence: 'Authorization: Bearer <token> used for both Global View and IO API/MCP requests.'
+  - id: mcp
+    conforms: true
+    evidence: Official Virtana MCP server (streaming-http) for Global View and IO endpoints.
+  - id: openapi
+    conforms: true
+    evidence: IO appliance publishes a downloadable OpenAPI/Swagger document (releases 7.1.0+); not publicly hosted.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom Solr-style envelope, not application/problem+json.
+  - id: oidc
+    conforms: false
+  - id: fhir-r4
+    conforms: false

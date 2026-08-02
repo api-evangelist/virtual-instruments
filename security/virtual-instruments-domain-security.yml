@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.virtana.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Sep 15 13:55:28 2026 GMT
+  hsts: true
+  hsts_max_age: 7776000
+- host: docs.virtana.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Feb 19 23:59:59 2027 GMT
+  hsts: false
+- host: app.cloud.virtana.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Jan 14 23:59:59 2027 GMT
+  hsts: false
+domains:
+- domain: virtana.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none

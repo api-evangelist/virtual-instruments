@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.virtana.com/en/virtana-platform/about-oauth-credentials/get-bearer-token.html
+docs:
+  - https://docs.virtana.com/en/virtana-platform/about-oauth-credentials.html
+  - https://docs.virtana.com/en/virtana-platform/about-oauth-credentials/generate-oauth-credentials.html
+  - https://docs.virtana.com/en/virtana-platform/about-oauth-credentials/get-bearer-token.html
+  - https://docs.virtana.com/en/infrastructure-observability/io-user-guide/public-api/getting-started-with-the-public-api.html
+  - https://docs.virtana.com/en/infrastructure-observability/io-administrator-guide/administering-your-io-portal/api-token-management.html
+summary:
+  types: [oauth2, http]
+  oauth2_flows: [clientCredentials]
+  http_schemes: [bearer]
+  token_delivery: Authorization header, prefixed with "Bearer"
+schemes:
+  - name: OAuth2 client credentials (Virtana Platform / Global View)
+    type: oauth2
+    flow: clientCredentials
+    token_url: https://app.cloud.virtana.com/authorization/oauth/token
+    grant_type: client_credentials
+    parameters: [client_id, client_secret]
+    request_example: >-
+      curl --location 'https://app.cloud.virtana.com/authorization/oauth/token'
+      --form 'grant_type="client_credentials"' --form 'client_id="<client_id>"'
+      --form 'client_secret="<client_secret>"'
+    response_fields: [access_token, refresh_token, expires_in, scope, token_type]
+    token_type: Bearer
+    credential_source: >-
+      client_id / client_secret are minted via the "Generate OAuth Credentials"
+      workflow in the Virtana Platform.
+  - name: IO API bearer token (Infrastructure Observability)
+    type: http
+    scheme: bearer
+    header: 'Authorization: Bearer <your-io-api-token>'
+    token_source: >-
+      Generated from the IO UI (User Name > API Documentation / API Token
+      Management). Only users with the IO-admin privilege can generate a token
+      for a specific timeframe; the token grants API access to anyone holding it
+      while valid.
+    notes: >-
+      IO Swagger UI (releases 7.1.0+) exposes an Authorize button to input the
+      API token, and the downloadable OpenAPI YAML for use in tools like Postman.
+notes:
+  - No public OpenAPI/Swagger document is available off-appliance; the IO OpenAPI YAML is downloadable only from an authenticated IO appliance instance at https://<IPADDRESS>/api/sdk/p/index.html.
+  - Global View and IO MCP endpoints reuse the same OAuth token / bearer token respectively (see mcp/virtual-instruments-mcp.yml).

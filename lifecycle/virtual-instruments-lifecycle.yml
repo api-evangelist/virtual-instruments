@@ -1,0 +1,40 @@
+generated: '2026-07-21'
+method: searched
+source: https://status.cloud.virtana.com/
+description: >-
+  Operational lifecycle for the Virtana observability platform: versioning of
+  the IO Public API, the public Atlassian Statuspage for the Virtana Cloud
+  service, and the dated "What's New in Virtana" release notes.
+versioning:
+  io_public_api:
+    scheme: uri-path
+    current: v2
+    path_example: /api/sdk/p/2/inventory
+    swagger_since: '7.1.0'
+    docs: https://docs.virtana.com/en/infrastructure-observability/io-user-guide/public-api/getting-started-with-the-public-api.html
+  global_view:
+    scheme: release-gated capabilities
+    notes: Global View API capabilities are tied to platform release; see What's New.
+status_page:
+  url: https://status.cloud.virtana.com/
+  provider: Atlassian Statuspage
+  service: Virtana Cloud service
+  components:
+    - App-US (US)
+    - Authentication
+    - Messaging
+    - Data Ingest
+    - Data Processing
+    - Data Access
+    - Virtana Platform
+  subscriptions: [email, SMS, Slack, Microsoft Teams, webhook, RSS/Atom]
+release_notes:
+  url: https://docs.virtana.com/en/what-s-new-in-virtana-.html
+  cadence: monthly
+  api_sections: ['#api-updates', '#public-api', '#new-features-in-the-public-api']
+deprecation:
+  policy_documented: false
+  notes: No formal deprecation / Sunset-header policy (RFC 8594) is published.
+sla:
+  documented: false
+  notes: No public SLA/uptime target page; Statuspage shows 90-day uptime history.

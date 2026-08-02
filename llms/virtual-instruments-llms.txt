@@ -1,0 +1,28 @@
+# Virtana (formerly Virtual Instruments)
+
+> Virtana is an AI-powered hybrid infrastructure observability platform for monitoring and optimizing performance, cost, and risk across on-premises, colocation, and cloud environments. It exposes public APIs (Global View APIs, the Infrastructure Observability Public REST API, and a Cloud Cost Management API) plus an official Model Context Protocol (MCP) server, secured with OAuth2 client-credentials bearer tokens.
+
+## APIs
+- [Using Global View APIs](https://docs.virtana.com/en/global-view/using-global-view-apis.html): Alert APIs, External Alert Ingestion, and On-Prem Storage Dashboard functions (JSON POST, Solr-style query engine).
+- [Infrastructure Observability Public API](https://docs.virtana.com/en/infrastructure-observability/io-user-guide/public-api/getting-started-with-the-public-api.html): versioned REST API (/api/sdk/p/2/...) with ~11 top-level endpoints; OpenAPI/Swagger downloadable from the IO appliance (7.1.0+).
+- [Cloud Cost Management API](https://docs.virtana.com/en/cloud-cost-management/using-ccm-api.html): cost/usage data access.
+
+## Authentication
+- [Get Bearer Token](https://docs.virtana.com/en/virtana-platform/about-oauth-credentials/get-bearer-token.html): OAuth2 client_credentials at https://app.cloud.virtana.com/authorization/oauth/token.
+- [Generate OAuth Credentials](https://docs.virtana.com/en/virtana-platform/about-oauth-credentials/generate-oauth-credentials.html): mint client_id / client_secret.
+- [IO API Token Management](https://docs.virtana.com/en/infrastructure-observability/io-administrator-guide/administering-your-io-portal/api-token-management.html): IO bearer tokens (IO-admin).
+
+## MCP
+- [Virtana MCP overview](https://docs.virtana.com/en/virtana-platform/virtana-s-model-context-protocol-server/model-context-protocol--mcp-.html): agent-backed, dynamic-schema MCP server.
+- [MCP connection requirements](https://docs.virtana.com/en/virtana-platform/virtana-s-model-context-protocol-server/mcp-connection-requirements.html): Global View endpoint https://<platform>/mcp (OAuth); IO endpoint https://<io_server>/api/sdk/mcp/ (Bearer); transport streaming-http.
+
+## Docs
+- [Virtana Documentation](https://docs.virtana.com/)
+- [What's New in Virtana (release notes)](https://docs.virtana.com/en/what-s-new-in-virtana-.html)
+- [Status Page](https://status.cloud.virtana.com/)
+
+## Site
+- [Virtana](https://www.virtana.com/)
+- [Blog](https://www.virtana.com/blog/)
+- [Support](https://www.virtana.com/support/)
+- [Training](https://training.virtana.com)

@@ -1,0 +1,42 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.virtana.com/en/what-s-new-in-virtana-.html
+description: >-
+  "What's New in Virtana" — the dated, monthly release notes for the Virtana
+  observability platform, organized by product (Infrastructure Observability,
+  Container Observability, Global View, Virtana Platform). Includes a Public API
+  section that tracks API updates. Recent window captured below.
+scheme: dated-monthly
+url: https://docs.virtana.com/en/what-s-new-in-virtana-.html
+api_change_sections:
+  - '#public-api'
+  - '#api-updates'
+  - '#new-features-in-the-public-api'
+entries:
+  - date: '2026-06'
+    products: [Infrastructure Observability, Container Observability, Virtana Platform]
+    highlights:
+      - Dell PowerProtect metrics (hardware config, health, utilization, capacity).
+      - Redesigned IO Alarm Engine (parallel-run, Single Metric alarms using Properties).
+      - Amazon CloudWatch for Amazon FSx integration (auto-discovers FSx for NetApp ONTAP).
+      - Google Kubernetes Engine (GKE) Autopilot cluster support for Container Observability.
+      - Kubernetes data export to PDF or CSV.
+      - Virtana Web Analytics unified adoption dashboard.
+  - date: '2026-04'
+    products: [Global View, Infrastructure Observability, Container Observability]
+    highlights:
+      - Documented Global View, IO, and Container Observability enhancements (see release notes).
+  - date: '2026-02'
+    products: [Infrastructure Observability, Container Observability]
+    highlights:
+      - Set SNMP receive traps.
+  - date: '2025-12'
+    products: [Global View, Infrastructure Observability, Container Observability]
+    highlights:
+      - Documented Global View, IO, and Container Observability enhancements (see release notes).
+  - date: '2025-09'
+    products: [Global View, Infrastructure Observability, Container Observability, Virtana Platform]
+    highlights:
+      - Documented enhancements across all four products (see release notes).
+notes:
+  - Only recent months are captured verbatim; the live "What's New" page is the source of truth for full detail and older entries.

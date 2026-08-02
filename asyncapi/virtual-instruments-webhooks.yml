@@ -1,0 +1,67 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.virtana.com/en/global-view/user-guide/actions.html
+spec_type: Webhooks
+description: >-
+  Virtana publishes no AsyncAPI document, but documents a real outbound
+  webhook/notification surface: alert notifications are delivered to
+  user-configured webhook endpoints via the Actions framework (Global View)
+  and Action/Notification integrations (Infrastructure Observability). Alerts
+  matching alert-response policies, or executed manually from an alert's
+  detail page, POST to the configured webhook URL. The generic HTTP action
+  type accepts an arbitrary endpoint URL, JSON data payload, and custom
+  header key/value pairs; chat destinations use each vendor's incoming-webhook
+  URL. The Statuspage status page additionally supports webhook subscriptions
+  for incident notifications.
+docs:
+  - https://docs.virtana.com/en/global-view/user-guide/actions.html
+  - https://docs.virtana.com/en/global-view/user-guide/actions/action-providers.html
+  - https://docs.virtana.com/en/global-view/user-guide/actions/automated-execution.html
+  - https://docs.virtana.com/en/global-view/user-guide/actions/manual-execution.html
+  - https://docs.virtana.com/en/global-view/user-guide/governance/alert-response-policies.html
+  - https://docs.virtana.com/en/infrastructure-observability/io-administrator-guide/administering-your-io-portal/actions.html
+direction: outbound
+delivery:
+  mechanism: HTTP POST to user-configured webhook URLs
+  configuration: >-
+    Settings > Actions Configuration (name + action type + webhook URL, with a
+    Send Message test); alert-response policies bind actions to alert criteria
+    with precedence ordering; manual Execute Action available from the Alert
+    Summary page.
+  payload: >-
+    JSON. Chat providers use their native message formats (e.g. Slack Block
+    Kit JSON for the slack action type); the HTTP action type takes a
+    user-supplied JSON data payload plus custom header key/value pairs.
+destinations:
+  - type: slack
+    notes: Slack incoming-webhook URL; Slack Block Kit JSON message payloads; IO Slack push notifications since IO 7.1.6 with per-severity channels (Info/Warning/Critical).
+  - type: microsoft-teams
+    notes: Teams incoming-webhook URL created via the channel's Apps menu.
+  - type: mattermost
+    notes: Mattermost incoming webhook; Markdown-formatted alert notifications (mattermost-policy.yaml template).
+  - type: webex
+    notes: Webex webhook app configured in the Webex Developer Portal (target URL, resource, event, optional secret).
+  - type: http
+    notes: Generic HTTP/HTTPS endpoint - URL + JSON payload + custom headers.
+  - type: email
+    notes: Email notification action.
+  - type: opsgenie
+    notes: Opsgenie notification action (Execute Action system provider list).
+  - type: servicenow
+    notes: ServiceNow event/incident creation via Action Integration (change-management integration).
+  - type: stackstorm
+    notes: StackStorm remote-pack integration for automated remediation.
+events:
+  - name: alert.notification
+    description: >-
+      Alert matching an alert-response policy (or manually executed action)
+      triggers the configured notification/webhook actions, by severity
+      category (Info, Warning, Critical).
+status_page_webhooks:
+  url: https://status.cloud.virtana.com/
+  notes: Statuspage subscriptions include webhook delivery for incident updates.
+notes: >-
+  This is an outbound notification surface configured in-product; Virtana does
+  not publish signing/retry semantics or an event-type catalog beyond alert
+  notifications. External Alert Ingestion (Global View API) is the inbound
+  complement, letting third-party systems POST alerts into Virtana.

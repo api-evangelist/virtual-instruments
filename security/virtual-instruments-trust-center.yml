@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+probe: true
+url: https://www.virtana.com/trust/
+description: >-
+  Virtana publishes a Trust page covering its security and compliance posture,
+  and a Regulatory Compliance section in the product docs. SOC 2 Type II
+  compliant (report available upon request); GDPR and CCPA privacy programs;
+  information security program aligned with the CSA Cloud Controls Matrix and
+  listed on the CSA STAR Registry; TX-RAMP Level 2 certified (Texas Risk and
+  Authorization Management Program) per the docs Regulatory Compliance page.
+certifications:
+  - SOC 2 Type II
+  - TX-RAMP Level 2
+  - CSA STAR Registry
+programs:
+  - GDPR
+  - CCPA
+  - CSA Cloud Controls Matrix (alignment)
+practices:
+  - Encryption in transit and at rest using industry-standard algorithms
+  - Multi-factor authentication on all systems and access points
+  - All data access logged and monitored
+  - Dev/Test/QA environments use anonymized and sanitized data
+  - SSO support (LDAP, SAML, OIDC)
+  - Data residency options in UK (Europe) and US Central (North America)
+  - 90-day data access window post-termination, then permanent deletion
+evidence:
+  - source: https://www.virtana.com/trust/
+    keywords: [SOC 2 Type II, GDPR, CCPA, CSA Cloud Controls Matrix, STAR Registry]
+  - source: https://docs.virtana.com/en/virtana-platform/regulatory-compliance.html
+    keywords: [TX-RAMP Level 2 certification, United States government compliance]
+notes: >-
+  No ISO 27001, PCI-DSS, HIPAA, or FedRAMP claims found. SOC 2 report is
+  request-gated, not publicly downloadable. No subprocessor list on the Trust
+  page. probe-security-programs.py did not auto-detect this page (keyword
+  threshold); captured via manual search of virtana.com/trust/ and the docs
+  Regulatory Compliance page.

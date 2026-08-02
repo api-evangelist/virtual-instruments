@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/virtual-instruments
+description: >-
+  First-party client library search for Virtana (formerly Virtual Instruments).
+  npm, PyPI, Maven Central, NuGet, RubyGems, Packagist, and crates.io were all
+  probed and hold no first-party Virtana packages. The company's legacy GitHub
+  organization (virtual-instruments) publishes one Python utility repo for the
+  VirtualWisdom product, explicitly labeled unsupported. Virtana does not ship
+  supported SDKs; API access is documented as direct REST calls (curl/Postman)
+  plus the official MCP server.
+registries_probed:
+  - registry: npm
+    query: virtana
+    result: none
+  - registry: pypi
+    query: virtana, vwimportutils
+    result: none
+  - registry: maven-central
+    query: virtana
+    result: none
+  - registry: nuget
+    query: virtana
+    result: none
+  - registry: rubygems
+    query: virtana
+    result: none
+  - registry: packagist
+    query: virtana
+    result: none
+  - registry: crates.io
+    query: virtana
+    result: none
+packages:
+  - language: python
+    registry: github
+    name: vwimportutils
+    url: https://github.com/virtual-instruments/vwimportutils
+    install: git clone https://github.com/virtual-instruments/vwimportutils
+    official: true
+    supported: false
+    notes: >-
+      "Unsupported utilities for interfacing with VirtualWisdom" — legacy
+      Virtual Instruments-era tooling, not a supported SDK. Source-only; not
+      published to any package registry.

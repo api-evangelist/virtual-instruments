@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.virtana.com/en/global-view/using-global-view-apis.html
+format: custom-json
+description: >-
+  Error handling for the Virtana observability APIs. Virtana does not publish an
+  RFC 9457 problem+json catalog; the Global View APIs return a JSON envelope
+  carrying a boolean error flag plus a Solr-style responseHeader status, and the
+  IO Public REST API returns standard HTTP status codes. Captured from public
+  documentation.
+envelope:
+  fields:
+    error: boolean            # false when the request succeeded
+    functionName: string      # echoes the invoked Global View function
+    message: string           # human-readable error text (empty on success)
+    response:
+      responseHeader:
+        status: integer        # 0 indicates success (Solr convention)
+        QTime: integer         # query time in ms
+      numFound: integer
+problems:
+  - condition: Global View function error
+    envelope_field: error=true
+    detail: message field carries the error text; functionName echoes the failing call.
+    source: docs Global View APIs (alert screen group examples)
+  - status: 404
+    title: Not Found
+    detail: >-
+      Returned by the IO MCP endpoint /api/sdk/mcp/ when the required trailing
+      slash is omitted; also standard for unknown IO REST resources.
+    source: mcp-connection-requirements
+  - status: 401
+    title: Unauthorized
+    detail: Returned when the OAuth bearer / IO API token is missing, invalid, or expired.
+    source: derived from documented Bearer-token auth requirement
+notes:
+  - IO endpoints are case-sensitive; an incorrectly-cased label/property yields an empty result set rather than an error.

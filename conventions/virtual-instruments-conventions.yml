@@ -1,0 +1,50 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.virtana.com/en/global-view/using-global-view-apis.html
+description: >-
+  Cross-cutting request/response conventions for the Virtana observability
+  APIs, captured from the public documentation. Covers the two distinct API
+  styles Virtana ships: the Global View cloud APIs (function-based JSON POST
+  bodies over a Solr-style query engine) and the Infrastructure Observability
+  (IO) Public REST API (versioned /api/sdk/p/2/ paths served from the appliance).
+authentication:
+  style: OAuth2 client_credentials -> Bearer token (Global View); Bearer API token (IO)
+  header: 'Authorization: Bearer <token>'
+  detail: authentication/virtual-instruments-authentication.yml
+versioning:
+  global_view: Function/endpoint-based; capabilities gated by platform release.
+  io_public_api: URI-path version segment, current v2 (e.g. /api/sdk/p/2/inventory)
+  io_swagger_since: Swagger/OpenAPI available directly from IO for releases 7.1.0 and higher.
+request_style:
+  global_view: >-
+    POST a JSON array of function objects; each object carries a "function"
+    name (e.g. alert_screen_group_api), a "params" map (facet, facet.field,
+    facet.pivot, rows), a "fields" filter map, and an "exclusiveFields" list.
+  io_public_api: >-
+    RESTful GET/POST against ~eleven top-level endpoints (inventory, schema, ...);
+    many aliased endpoints resolve to top-level ones. Case-sensitive: display
+    labels and property names must match exactly or no results are returned.
+case_sensitivity: IO endpoint URLs and payloads are case-sensitive.
+pagination:
+  global_view: Solr-style paging via "start" and "rows" params in the response header params.
+  response_fields: [numFound, start, numFoundExact, docs]
+error_envelope:
+  detail: errors/virtual-instruments-problem-types.yml
+  global_view_shape:
+    error: boolean          # false on success
+    functionName: string    # echoes the requested function
+    message: string         # error message (empty on success)
+    response: object        # payload; contains responseHeader.status (0 = ok) and QTime
+rate_limiting:
+  io_public_api: Rate limiting is applied to every endpoint on each request; specific limits documented in the IO Swagger UI.
+  global_view: Not publicly documented.
+idempotency:
+  supported: false
+  notes: No idempotency-key header/contract is documented for the Virtana APIs.
+discovery:
+  io_help_query: Append ?help=true (or ?help) to an endpoint for inline endpoint documentation, e.g. https://<IP>/api/sdk/p/2/inventory?help=true
+  io_example_param: Aliased endpoints accept an "example" query param that returns the URL + payload of the related top-level endpoint.
+cross_links:
+  authentication: authentication/virtual-instruments-authentication.yml
+  errors: errors/virtual-instruments-problem-types.yml
+  lifecycle: lifecycle/virtual-instruments-lifecycle.yml

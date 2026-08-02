@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.virtana.com/en/what-s-new-in-virtana-.html#test-alert-intelligence-and-response-policies--sandbox-
+description: >-
+  Virtana ships a Sandbox mode (Global View, April 2026) for testing Alert
+  Intelligence and Response Policies against existing alerts before
+  activation. Users can view matching alerts, validate action-specific
+  criteria, and test alert responses (such as notifications) without the
+  policy taking effect; policies apply only to new alerts once enabled. This
+  is a policy-validation sandbox, not a separate test tenant: no test API
+  keys, test data values, or sandbox base URL are published.
+docs:
+  - https://docs.virtana.com/en/what-s-new-in-virtana-.html#test-alert-intelligence-and-response-policies--sandbox-
+  - https://docs.virtana.com/en/global-view/user-guide/governance/alert-intelligence-policies.html
+sandbox:
+  kind: in-product policy testing mode
+  scope: Alert Intelligence and Response Policies (Global View)
+  capabilities:
+    - Test alert policies against existing alerts before activation
+    - View matching alerts for a draft policy
+    - Validate action-specific criteria
+    - Test alert responses (e.g. notifications)
+  limitations:
+    - Validation only - enabled policies apply to new alerts going forward
+test_credentials: none published
+test_data: none published
+notes: >-
+  No separate sandbox environment, test-mode API keys, or magic test values
+  are documented for the Global View / IO / CCM APIs. Action configurations
+  do include a "Send Message" test button for verifying webhook destinations.

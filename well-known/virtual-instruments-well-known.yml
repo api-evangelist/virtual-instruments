@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: probed
+description: >-
+  Probe of the /.well-known/ discovery surface on the Virtana hosts. No
+  well-known documents are published: the app host redirects every well-known
+  path to the UI login (301 -> /ui/) and the marketing host returns 404. This is
+  a recorded negative result, not a fabrication.
+hosts:
+  - host: https://app.cloud.virtana.com
+    documents:
+      - {path: /.well-known/security.txt, status: 301, redirect: /ui/}
+      - {path: /.well-known/openid-configuration, status: 301, redirect: /ui/}
+      - {path: /.well-known/oauth-authorization-server, status: 301, redirect: /ui/}
+      - {path: /.well-known/api-catalog, status: 301, redirect: /ui/}
+      - {path: /.well-known/ai-plugin.json, status: 301, redirect: /ui/}
+  - host: https://www.virtana.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /security.txt, status: 404}
