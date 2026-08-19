@@ -2,53 +2,55 @@ generated: '2026-07-21'
 method: searched
 status: published
 source: https://docs.virtana.com/en/virtana-platform/virtana-s-model-context-protocol-server/mcp-connection-requirements.html
-description: >-
-  Virtana publishes an official Model Context Protocol (MCP) server surface for
-  its observability platform. Two product endpoints are offered — Global View
-  (GV) and Infrastructure Observability (IO) — each exposing live metric, alert,
-  inventory, relationship and schema data to MCP-capable AI clients over
-  streaming HTTP. Virtana MCP uses an agent-backed, dynamic-schema architecture
-  and requires an LLM to be configured in the platform.
+description: Virtana publishes an official Model Context Protocol (MCP) server surface for its observability
+  platform. Two product endpoints are offered — Global View (GV) and Infrastructure Observability (IO)
+  — each exposing live metric, alert, inventory, relationship and schema data to MCP-capable AI clients
+  over streaming HTTP. Virtana MCP uses an agent-backed, dynamic-schema architecture and requires an LLM
+  to be configured in the platform.
 transport: streaming-http
 servers:
-  - name: Global View (GV) MCP
-    product: Global View
-    url: https://app.cloud.virtana.com/mcp
-    url_format: https://<your-platform-url>/mcp
-    transport: streaming-http
-    authentication: OAuth token in the HTTP Authorization header
-    hosted: true
-    notes: For Virtana-hosted GV environments the endpoint is typically https://app.cloud.virtana.com/mcp
-  - name: Infrastructure Observability (IO) MCP
-    product: Infrastructure Observability
-    url_format: https://<io_server>/api/sdk/mcp/
-    transport: streaming-http
-    authentication: Bearer token in the HTTP Authorization header
-    hosted: false
-    notes: >-
-      Trailing slash in /api/sdk/mcp/ is required; omitting it returns 404 Not
-      Found. IO is a customer-hosted appliance/virtual-edition, so the host is
-      environment-specific.
+- name: Global View (GV) MCP
+  product: Global View
+  url: https://app.cloud.virtana.com/mcp
+  url_format: https://<your-platform-url>/mcp
+  transport: streaming-http
+  authentication: OAuth token in the HTTP Authorization header
+  hosted: true
+  notes: For Virtana-hosted GV environments the endpoint is typically https://app.cloud.virtana.com/mcp
+- name: Infrastructure Observability (IO) MCP
+  product: Infrastructure Observability
+  url_format: https://<io_server>/api/sdk/mcp/
+  transport: streaming-http
+  authentication: Bearer token in the HTTP Authorization header
+  hosted: false
+  notes: Trailing slash in /api/sdk/mcp/ is required; omitting it returns 404 Not Found. IO is a customer-hosted
+    appliance/virtual-edition, so the host is environment-specific.
 capabilities:
-  # From "Feature availability by endpoint" (Table 160). Both endpoints expose
-  # a subset of the following; exact per-endpoint availability is documented at source.
-  - Aggregated metric data
-  - Alert data
-  - Basic relationship queries
-  - Entity and inventory data
-  - Schema queries (data model and structure)
+- Aggregated metric data
+- Alert data
+- Basic relationship queries
+- Entity and inventory data
+- Schema queries (data model and structure)
 requirements:
-  - An LLM provider and model must be configured in the Virtana platform (prerequisite, not optional).
-  - MCP client host needs outbound HTTPS connectivity to the endpoint.
-  - Endpoint must present a valid, trusted TLS certificate (self-signed certs rejected by some clients, e.g. Goose).
+- An LLM provider and model must be configured in the Virtana platform (prerequisite, not optional).
+- MCP client host needs outbound HTTPS connectivity to the endpoint.
+- Endpoint must present a valid, trusted TLS certificate (self-signed certs rejected by some clients,
+  e.g. Goose).
 architecture:
   model: agent-backed dynamic schema
   highlights:
-    - Dynamic Schemas handle data drift without manual reconfiguration.
-    - Decoupled architecture accepts either UI terms or stable backend IDs.
-    - Agent-led processing interprets request intent and filters before returning results.
+  - Dynamic Schemas handle data drift without manual reconfiguration.
+  - Decoupled architecture accepts either UI terms or stable backend IDs.
+  - Agent-led processing interprets request intent and filters before returning results.
 docs:
-  - https://docs.virtana.com/en/virtana-platform/virtana-s-model-context-protocol-server/model-context-protocol--mcp-.html
-  - https://docs.virtana.com/en/virtana-platform/virtana-s-model-context-protocol-server/getting-started-with-virtana-mcp.html
-  - https://docs.virtana.com/en/virtana-platform/virtana-s-model-context-protocol-server/mcp-connection-requirements.html
-  - https://docs.virtana.com/en/virtana-platform/virtana-s-model-context-protocol-server/configure-extensions.html
+- https://docs.virtana.com/en/virtana-platform/virtana-s-model-context-protocol-server/model-context-protocol--mcp-.html
+- https://docs.virtana.com/en/virtana-platform/virtana-s-model-context-protocol-server/getting-started-with-virtana-mcp.html
+- https://docs.virtana.com/en/virtana-platform/virtana-s-model-context-protocol-server/mcp-connection-requirements.html
+- https://docs.virtana.com/en/virtana-platform/virtana-s-model-context-protocol-server/configure-extensions.html
+deployment:
+  mode: remote
+  endpoint: https://app.cloud.virtana.com/mcp
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census
